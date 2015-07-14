@@ -29,10 +29,11 @@ remove_dependencies()
 build_ceph()
 {
 	cd $CEPH_VER
-	./install-deps.sh
-	./autogen.sh
-	./configure
-	sudo make && sudo make install
+#	./install-deps.sh
+#	./autogen.sh
+#	./configure
+#	sudo make 
+	sudo make install
 	cd ../
 }
 
@@ -54,9 +55,9 @@ update_ceph_script()
 	sudo sed -i s/"ETCDIR=\/usr\/local\/etc\/ceph"/"ETCDIR=\/etc\/ceph"/ /etc/init.d/ceph
 }
 
-download_ceph
-remove_dependencies
-download_dependencies
+#download_ceph
+#remove_dependencies
+#download_dependencies
 
 build_ceph
 install_ceph_script
