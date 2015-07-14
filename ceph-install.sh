@@ -29,9 +29,9 @@ remove_dependencies()
 build_ceph()
 {
 	cd $CEPH_VER
-	#./install-deps.sh
-	#./autogen.sh
-	#./configure
+	./install-deps.sh
+	./autogen.sh
+	./configure
 	sudo make && sudo make install
 	cd ../
 }
