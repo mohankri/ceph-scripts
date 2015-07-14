@@ -29,9 +29,9 @@ remove_dependencies()
 build_ceph()
 {
 	cd $CEPH_VER
-	#./install-deps.sh
-	#./autogen.sh
-	#./configure
+	./install-deps.sh
+	./autogen.sh
+	./configure
 	sudo make && sudo make install
 	cd ../
 }
@@ -40,6 +40,7 @@ install_ceph_script()
 {
 	sudo cp ${CEPH_VER}/src/init-ceph /etc/init.d/ceph
 	sudo cp ${CEPH_VER}/src/init-radosgw /etc/init.d/radosgw
+	sudo cp ${CEPH_VER}/src/upstart/* /etc/init/
 	sudo chmod 755 /etc/init.d/radosgw
 	sudo cp ${CEPH_VER}/udev/* /lib/udev/rules.d
 }
