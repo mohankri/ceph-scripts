@@ -16,6 +16,8 @@ download_dependencies()
 	sudo apt-get -y install autotools-dev autoconf automake cdbs gcc g++ git libboost-dev libedit-dev libssl-dev libtool libfcgi libfcgi-dev libfuse-dev linux-kernel-headers libcrypto++-dev libcrypto++ libexpat1-dev
 	sudo apt-get -y install uuid-dev libkeyutils-dev libgoogle-perftools-dev libatomic-ops-dev libaio-dev libgdata-common libgdata13 libsnappy-dev libleveldb-dev
 	sudo apt-get -y install libblkid-dev libudev-dev xfslibs-dev libboost-all-dev gdisk	
+	sudo apt-get -y install debhelper dpkg-buildpackage
+	
 }
 
 remove_dependencies()
@@ -23,6 +25,7 @@ remove_dependencies()
 	sudo apt-get  -y remove autotools-dev autoconf automake cdbs gcc g++ git libboost-dev libedit-dev libssl-dev libtool libfcgi libfcgi-dev libfuse-dev linux-kernel-headers libcrypto++-dev libcrypto++ libexpat1-dev
 	sudo apt-get  -y remove uuid-dev libkeyutils-dev libgoogle-perftools-dev libatomic-ops-dev libaio-dev libgdata-common libgdata13 libsnappy-dev libleveldb-dev
 	sudo apt-get -y remove libblkid-dev libudev-dev xfslibs-dev libboost-all-dev gdisk	
+	sudo apt-get -y remove debhelper dpkg-buildpackage
 
 }
 
@@ -56,7 +59,7 @@ update_ceph_script()
 }
 
 download_ceph
-remove_dependencies
+#remove_dependencies
 download_dependencies
 
 build_ceph
