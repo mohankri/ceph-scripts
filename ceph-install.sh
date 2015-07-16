@@ -35,8 +35,8 @@ build_ceph()
 	./install-deps.sh
 	./autogen.sh
 	./configure
-	sudo make 
-	sudo make install
+	make 
+	#sudo make install
 	cd ../
 }
 
@@ -58,11 +58,20 @@ update_ceph_script()
 	sudo sed -i s/"ETCDIR=\/usr\/local\/etc\/ceph"/"ETCDIR=\/etc\/ceph"/ /etc/init.d/ceph
 }
 
-download_ceph
+ceph_deploy_setup()
+{
+	wget -q -O- 'https://ceph.com/git/?p=ceph.git;a=blob_plain;f=keys/release.asc' | sudo apt-key add -
+	echo deb http://ceph.com/debian-{ceph-stable-release}/ $(lsb_release -sc) main | sudo tee /etc/apt/sources.list.d/ceph.list
+	sudo apt-get update && sudo apt-get install ceph-deploy
+}
+
+#download_ceph
 #remove_dependencies
-download_dependencies
+#download_dependencies
 
 build_ceph
 install_ceph_script
-update_ceph_script
+
+#ceph_deploy_setup
+#update_ceph_script
 
