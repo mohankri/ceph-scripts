@@ -36,7 +36,7 @@ build_ceph()
 	./autogen.sh
 	./configure
 	make 
-	#sudo make install
+	sudo make install
 	cd ../
 }
 
@@ -65,13 +65,13 @@ ceph_deploy_setup()
 	sudo apt-get update && sudo apt-get install ceph-deploy
 }
 
-#download_ceph
+download_ceph
 #remove_dependencies
-#download_dependencies
+download_dependencies
 
 build_ceph
 install_ceph_script
 
 #ceph_deploy_setup
-#update_ceph_script
+update_ceph_script
 
