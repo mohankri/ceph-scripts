@@ -24,3 +24,15 @@ and restart the ceph-osd process manually
 
 ceph-osd -i 0
 
+Build CEPH Client on other host
+===============================
+ceph@ceph8:/etc/ceph$ cat ceph.conf 
+[global]
+mon_host = ceph1,ceph3,ceph7
+keyring = /etc/ceph/ceph.client.admin.keyring
+
+copy ceph.client.admin.keyring /etc/ceph directory from the node running ceph-mon
+
+ceph@ceph8:/home/ceph$ gcc -o cephclient cephclient.c -lrado
+
+
