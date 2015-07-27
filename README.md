@@ -33,6 +33,6 @@ keyring = /etc/ceph/ceph.client.admin.keyring
 
 copy ceph.client.admin.keyring /etc/ceph directory from the node running ceph-mon
 
-ceph@ceph8:/home/ceph$ gcc -o cephclient cephclient.c -lrado
+ceph@ceph8:/home/ceph$ gcc -o cephclient cephclient.c -lrados
 
 
