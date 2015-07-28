@@ -36,3 +36,44 @@ copy ceph.client.admin.keyring /etc/ceph directory from the node running ceph-mo
 ceph@ceph8:/home/ceph$ gcc -o cephclient cephclient.c -lrados
 
 
+Micro-OSD
+=========
+$ time bash micro-osd.sh single-osd
+$ export CEPH_ARGS='--conf single-osd/ceph.conf'
+
+$ du -sh single-osd/
+103M    single-osd/
+
+Cluster Configuration
+
+[global]
+fsid = $(uuidgen)
+osd crush chooseleaf type = 0
+run dir = ${DIR}/run
+auth cluster required = none
+auth service required = none
+auth client required = none
+
+MON configuration
+
+[mon.0]
+log file = ${DIR}/log/mon.log
+chdir = ""
+mon cluster log file = ${DIR}/log/mon-cluster.log
+mon data = ${MON_DATA}
+mon addr = 127.0.0.1
+
+$ ceph-mon --id 0 --mkfs --keyring /dev/null
+
+$ ceph-mon --id 0
+
+OSD configuration
+
+[osd.0]
+log file = ${DIR}/log/osd.log
+chdir = ""
+osd data = ${OSD_DATA}
+osd journal = ${OSD_DATA}.journal
+osd journal size = 100
+
+ceph osd pool set data size 1
