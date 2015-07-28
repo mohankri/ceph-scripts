@@ -32,10 +32,10 @@ remove_dependencies()
 build_ceph()
 {
 	cd $CEPH_VER
-	./install-deps.sh
-	./autogen.sh
-	./configure
-	make 
+#	./install-deps.sh
+#	./autogen.sh
+#	./configure
+#	make 
 	sudo make install
 	cd ../
 }
@@ -65,7 +65,7 @@ ceph_deploy_setup()
 	sudo apt-get update && sudo apt-get install ceph-deploy
 }
 
-download_ceph
+#download_ceph
 #remove_dependencies
 download_dependencies
 
