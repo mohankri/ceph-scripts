@@ -1,7 +1,8 @@
 #!/bin/bash
 
 CEPH_URL=http://ceph.com/download
-CEPH_VER=ceph-0.94.2
+#CEPH_VER=ceph-0.94.2
+CEPH_VER=ceph
 TARBALL=$CEPH_VER.tar
 
 download_ceph()
@@ -55,6 +56,7 @@ update_ceph_script()
 	sudo sed -i s/bin/"local\/bin"/g /etc/init/ceph-mds.conf
 	sudo sed -i s/bin/"local\/bin"/g /etc/init/ceph-mon.conf
 	sudo sed -i s/bin/"local\/bin"/g /etc/init/ceph-osd.conf
+	sudo sed -i s/libexec/"local\/libexec"/g /etc/init/ceph-osd.conf
 	sudo sed -i s/"ETCDIR=\/usr\/local\/etc\/ceph"/"ETCDIR=\/etc\/ceph"/ /etc/init.d/ceph
 }
 
@@ -67,9 +69,9 @@ ceph_deploy_setup()
 
 #download_ceph
 #remove_dependencies
-download_dependencies
+#download_dependencies
 
-build_ceph
+#build_ceph
 install_ceph_script
 
 #ceph_deploy_setup
